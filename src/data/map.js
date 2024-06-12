@@ -5,7 +5,7 @@ let gameMap = {
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 2, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -19,4 +19,16 @@ const updateMap = function(newMap) {
   gameMap.skeleton = newMap;
 }
 
-export { gameMap, updateMap };
+const checkMap = function(target) {
+  let listOfFound = [];
+  for (let i = 0; i < gameMap.skeleton.length; i++) {
+    for (let j = 0; j < gameMap.skeleton[i].length; j++) {
+      if (gameMap.skeleton[i][j] == target) {
+        listOfFound.push([i, j]);
+      }
+    }
+  } 
+  return listOfFound;
+}
+
+export { gameMap, updateMap, checkMap };
