@@ -2,7 +2,7 @@ let gameMap = {
   rowLength: 10,
   get blockSize(){ return canvas.width / this.rowLength},
   skeleton: [
-    [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [9, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
