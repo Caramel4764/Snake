@@ -5,12 +5,14 @@ import { eatApple, spawnApple } from "./apple.js";
 
 let moveX = 0;
 let moveY = 0
+let appleEaten = false;
 
+let indexPlayer = 0;
+let mostRecent = player.prevLocation.length;
 const moveForward = function () {
-  console.log("-----")
   console.log(gameMap.skeleton)
-  //console.log(gameMap.skeleton)
-  player.prevLocation = [player.location[0], player.location[1]];
+  appleEaten = false;
+  player.prevLocation.push([player.location[0], player.location[1]]);
   moveX = 0;
   moveY = 0;
   if (player.direction == 'down') {
@@ -24,17 +26,24 @@ const moveForward = function () {
   }
   player.location[0]+=moveY
   player.location[1]+=moveX
-
+  if (gameMap.skeleton[player.location[0]][player.location[1]]  == 2) {
+    appleEaten = true;
+  }
+  gameMap.skeleton[player.prevLocation[indexPlayer][0]][player.prevLocation[indexPlayer][1]] = 0;
+  gameMap.skeleton[player.location[0]][player.location[1]] = 1;
   //if snake eats itself
-  if (gameMap.skeleton[player.location[0]][player.location[1]] == 1) {
+  if (gameMap.skeleton[player.prevLocation[mostRecent][0]][player.prevLocation[mostRecent][1]] == 1) {
     return gameOver();
   //if snake eats apple
-  } else if (gameMap.skeleton[player.location[0]][player.location[1]] == 2) {
+  } 
+   if (appleEaten) {
     eatApple();
-    spawnApple([moveX, moveY]);
   }
-  gameMap.skeleton[player.prevLocation[0]][player.prevLocation[1]] = 0;
-  gameMap.skeleton[player.location[0]][player.location[1]] = 1;
+  if (player.prevLocation.length > player.score) {
+    player.prevLocation.shift();
+
+  }
+  spawnApple([moveX, moveY]);
 };
 
 const changeDirection = function (e) {
