@@ -6,9 +6,11 @@ import { eatApple, spawnApple } from "./apple.js";
 let moveX = 0;
 let moveY = 0;
 let appleEaten = false;
+let tempDirection = "down";
 
 let indexPlayer = 0;
 const moveForward = function () {
+  player.direction = tempDirection;
   appleEaten = false;
   player.prevLocation.push([player.location[0], player.location[1]]);
   moveX = 0;
@@ -59,13 +61,13 @@ const moveForward = function () {
 
 const changeDirection = function (e) {
   if (e.key == "a" && player.direction != "right") {
-    player.direction = "left";
+    tempDirection = "left";
   } else if (e.key == "w" && player.direction != "down") {
-    player.direction = "up";
+    tempDirection = "up";
   } else if (e.key == "d" && player.direction != "left") {
-    player.direction = "right";
+    tempDirection = "right";
   } else if (e.key == "s" && player.direction != "up") {
-    player.direction = "down";
+    tempDirection = "down";
   }
 };
 
