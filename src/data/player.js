@@ -3,6 +3,7 @@ const player = {
   prevLocation: [],
   direction: "down",
   score: 0,
+  alive: true,
 };
 
 export default player;
