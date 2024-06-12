@@ -3,20 +3,20 @@ import { gameMap, checkMap } from "./data/map.js";
 
 const scoreBoard = document.getElementById("score");
 
-const spawnApple = function (playerDirection) {
+const spawnApple = function (playerDirection = [0, 0]) {
   if (checkMap(2).length == 0) {
-  //pick a random location
-  let x = Math.floor(Math.random() * 10);
-  let y = Math.floor(Math.random() * 10);
-  //if location occupied, pick a new location
+    //pick a random location
+    let x = Math.floor(Math.random() * gameMap.rowLength);
+    let y = Math.floor(Math.random() * gameMap.rowLength);
+    //if location occupied, pick a new location
+    while (gameMap.skeleton[y][x] == 1 || gameMap.skeleton[y][x] == 9) {
+      x = Math.floor(Math.random() * gameMap.rowLength);
+      y = Math.floor(Math.random() * gameMap.rowLength);
+    }
+    console.log(`${gameMap.skeleton[y][x] == 1} X: ${x} Y: ${y}`);
+    console.log(gameMap.skeleton);
 
-  while (
-    x !== player.location[0] && y != player.location[1]
-  ) {
-    x = Math.floor(Math.random() * 10);
-    y = Math.floor(Math.random() * 10);
-  }
-  gameMap.skeleton[y][x] = 2;
+    gameMap.skeleton[y][x] = 2;
   }
 };
 
