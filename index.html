@@ -2,15 +2,30 @@
 <html>
   <head>
     <title>Snake</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <div id="gameDiv">
-      <div style="visibility:hidden" id="gameOverMenu">
+      <div style="visibility: hidden" id="gameOverMenu" class="gameOverMenu">
         <div>
           <h2>Game Over</h2>
           <p>Score:<span class="score">0</span></p>
           <button id="playAgainButton">Play Again?</button>
+        </div>
+      </div>
+
+      <div style="visibility: visible" id="startMenu" class="gameOverMenu">
+        <div>
+          <div>
+            <h2>Snake</h2>
+            <button id="startButton">Start</button>
+          </div>
         </div>
       </div>
       <canvas

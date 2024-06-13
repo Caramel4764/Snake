@@ -1,8 +1,9 @@
 * {
   margin: 0;
+  font-family: "Pixelify Sans", sans-serif;
+  font-weight: 400;
 }
-
-#gameOverMenu {
+.gameOverMenu {
   background-color: rgb(0, 0, 0, 0.7);
   width:600px;
   height: 600px;
@@ -10,18 +11,57 @@
   text-align: center;
   color: white;
 } 
-#gameOverMenu div {
-  position: relative;
+#gameDiv {
+  position:absolute;
+  left: 2em;
+  top: 2em;
+}
+#startMenu div {
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+}
+#startMenu div div {
+  position:relative;
   top:20%;
 }
-#gameOverMenu h2 {
+#startMenu div h2 {
+  font-size: 90px;
+  margin-bottom: 10px;
+}
+#startMenu div p {
+  font-size: 50px;
+}
+#startMenu div button {
+  width:5em;
+  opacity: 1;
+  height:3.5em;
+  margin-top:1em;
+  border-radius: 1em;
+  font-size: 2em;
+}
+/*Game Over Menu*/
+#gameOverMenu div {
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+}
+
+#gameOverMenu div h2 {
+  margin-top:3em;
   font-size: 60px;
   margin-bottom: 10px;
 }
-#gameOverMenu p {
+#gameOverMenu div p {
   font-size: 50px;
 }
-#gameOverMenu button {
+#gameOverMenu div button {
   width:5em;
   opacity: 1;
   height:3.5em;

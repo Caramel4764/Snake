@@ -1,11 +1,16 @@
 import { gameMap, updateMap } from "./data/map.js";
-import {gameOver} from "./gameOver.js";
+import { gameOver } from "./gameState.js";
 import player from "./data/player.js";
 import { eatApple, spawnApple } from "./apple.js";
 
 let moveX = 0;
 let moveY = 0;
 let appleEaten = false;
+let isPlayerOutOfBounds =
+  player.location[0] > gameMap.rowLength - 1 ||
+  player.location[0] < 0 ||
+  player.location[1] > gameMap.rowLength - 1 ||
+  player.location[1] < 0;
 
 let indexPlayer = 0;
 const moveForward = function () {
@@ -26,14 +31,22 @@ const moveForward = function () {
   //change location
   player.location[0] += moveY;
   player.location[1] += moveX;
-
-  //if snake eats itself
-  if (gameMap.skeleton[player.location[0]][player.location[1]] == 1) {
+  //if out of bounds
+  if (
+    player.location[0] > gameMap.rowLength - 1 ||
+    player.location[0] < 0 ||
+    player.location[1] > gameMap.rowLength - 1 ||
+    player.location[1] < 0
+  ) {
     return gameOver();
+  } else {
+    if (gameMap.skeleton[player.location[0]][player.location[1]] == 1) {
+      return gameOver();
+    } else if (gameMap.skeleton[player.location[0]][player.location[1]] == 2) {
+      appleEaten = true;
+    }
   }
-  if (gameMap.skeleton[player.location[0]][player.location[1]] == 2) {
-    appleEaten = true;
-  }
+
   //update map
   gameMap.skeleton[player.prevLocation[player.prevLocation.length - 1][0]][
     player.prevLocation[player.prevLocation.length - 1][1]
