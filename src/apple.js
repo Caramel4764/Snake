@@ -1,7 +1,7 @@
 import player from "./data/player.js";
 import { gameMap, checkMap } from "./data/map.js";
 
-const scoreBoard = document.getElementById("score");
+const scoreBoard = document.getElementsByClassName("score");
 
 const spawnApple = function (playerDirection = [0, 0]) {
   if (checkMap(2).length == 0) {
@@ -22,7 +22,9 @@ const spawnApple = function (playerDirection = [0, 0]) {
 
 const eatApple = function () {
   player.score++;
-  scoreBoard.innerHTML = player.score;
+  for (let i = 0; i < scoreBoard.length; i++) {
+  scoreBoard[i].innerHTML = player.score;
+  }
 };
 
 export { spawnApple, eatApple };

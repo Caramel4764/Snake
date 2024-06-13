@@ -1,14 +1,31 @@
+* {
+  margin: 0;
+}
+
 #gameOverMenu {
-  background-color: yellow;
-  width:30em;
-  height: 30em;
-  margin-right: 5em;
-  float:right;
+  background-color: rgb(0, 0, 0, 0.7);
+  width:600px;
+  height: 600px;
+  position:absolute;
   text-align: center;
+  color: white;
 } 
+#gameOverMenu div {
+  position: relative;
+  top:20%;
+}
+#gameOverMenu h2 {
+  font-size: 60px;
+  margin-bottom: 10px;
+}
+#gameOverMenu p {
+  font-size: 50px;
+}
 #gameOverMenu button {
   width:5em;
+  opacity: 1;
   height:3.5em;
+  margin-top:1em;
   border-radius: 1em;
   font-size: 1.5em;
 }

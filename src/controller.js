@@ -1,16 +1,15 @@
 import { gameMap, updateMap } from "./data/map.js";
-import gameOver from "./gameOver.js";
+import {gameOver} from "./gameOver.js";
 import player from "./data/player.js";
 import { eatApple, spawnApple } from "./apple.js";
 
 let moveX = 0;
 let moveY = 0;
 let appleEaten = false;
-let tempDirection = "down";
 
 let indexPlayer = 0;
 const moveForward = function () {
-  player.direction = tempDirection;
+  player.direction = player.tempDirection;
   appleEaten = false;
   player.prevLocation.push([player.location[0], player.location[1]]);
   moveX = 0;
@@ -61,13 +60,13 @@ const moveForward = function () {
 
 const changeDirection = function (e) {
   if (e.key == "a" && player.direction != "right") {
-    tempDirection = "left";
+    player.tempDirection = "left";
   } else if (e.key == "w" && player.direction != "down") {
-    tempDirection = "up";
+    player.tempDirection = "up";
   } else if (e.key == "d" && player.direction != "left") {
-    tempDirection = "right";
+    player.tempDirection = "right";
   } else if (e.key == "s" && player.direction != "up") {
-    tempDirection = "down";
+    player.tempDirection = "down";
   }
 };
 

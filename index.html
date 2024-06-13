@@ -2,21 +2,25 @@
 <html>
   <head>
     <title>Snake</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div id="gameOverMenu">
-      <h2>Game Over</h2>
-      <h1>Score:<span id="score">0</span></h1>
-      <button id="playAgainButton">Play Again?</button>
+    <div id="gameDiv">
+      <div style="visibility:hidden" id="gameOverMenu">
+        <div>
+          <h2>Game Over</h2>
+          <p>Score:<span class="score">0</span></p>
+          <button id="playAgainButton">Play Again?</button>
+        </div>
+      </div>
+      <canvas
+        style="border: 1px solid black"
+        id="canvas"
+        width="600"
+        height="600"
+      ></canvas>
     </div>
-    <canvas
-      style="border: 1px solid black"
-      id="canvas"
-      width="600"
-      height="600"
-    ></canvas>
-    <p>Score: <span id="score">0</span></p>
-    <script type='module' src="./index.js"></script>
+    <p>Score: <span class="score">0</span></p>
+    <script type="module" src="./index.js"></script>
   </body>
 </html>
