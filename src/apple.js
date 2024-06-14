@@ -1,7 +1,6 @@
 import player from "./data/player.js";
 import { gameMap, checkMap } from "./data/map.js";
-
-const scoreBoard = document.getElementById("score");
+import {playEat} from "../assets/audioScripts/eat.js";
 
 const spawnApple = function (playerDirection = [0, 0]) {
   if (checkMap(2).length == 0) {
@@ -13,16 +12,15 @@ const spawnApple = function (playerDirection = [0, 0]) {
       x = Math.floor(Math.random() * gameMap.rowLength);
       y = Math.floor(Math.random() * gameMap.rowLength);
     }
-    console.log(`${gameMap.skeleton[y][x] == 1} X: ${x} Y: ${y}`);
-    console.log(gameMap.skeleton);
-
     gameMap.skeleton[y][x] = 2;
   }
 };
 
 const eatApple = function () {
+  //eat.play()
+  playEat();
   player.score++;
-  scoreBoard.innerHTML = player.score;
+  player.updateScore();
 };
 
 export { spawnApple, eatApple };
