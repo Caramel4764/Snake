@@ -14,9 +14,12 @@ window.addEventListener("keydown", changeDirection);
 drawMap();
 spawnApple();
 
+let hiddenScoreInput = document.getElementById("hiddenScoreInput");
+
 setInterval(function () {
   if (player.alive == true) {
     moveForward();
     drawMap();
+    hiddenScoreInput.value = player.score;
   }
 }, player.speed);

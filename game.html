@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Snake</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div id="gameEntireScreen">
+      <div id="gameDiv">
+        <div style="visibility: hidden" id="gameOverMenu" class="gameOverMenu">
+          <div>
+            <h2>Game Over</h2>
+            <p>Score:<span class="score">0</span></p>
+            <button id="playAgainButton">Play Again?</button>
+          </div>
+        </div>
+        <div style="visibility: visible" id="startMenu" class="gameOverMenu">
+          <div>
+            <div>
+              <h2>Snake</h2>
+              <button id="startButton">Start</button>
+            </div>
+          </div>
+        </div>
+
+        <div
+          style="visibility: hidden"
+          id="submitScoreMenu"
+          class="gameOverMenu"
+        >
+          <div>
+            <div>
+              <h2>Enter Your Name:</h2>
+              <form action='/submit'  method='post'>
+                <input name="name" type="text" id="nameInput" />
+                <br>
+                <input class='submitButton' id="submitButton" value="Submit" type="submit"></input>
+                <br>
+                <!--type="hidden-->
+                <input name="score" name="score" type="hidden" id="hiddenScoreInput"/>
+              </form>
+              <button type='button' class='submitButton' id="cancelButton" type="submit">X</button>
+            </div>
+          </div>
+        </div>
+
+        <canvas
+          style="border: 1px solid gray"
+          id="canvas"
+          width="600"
+          height="600"
+        ></canvas>
+      </div>
+      <div id="leaderboard">
+        <p id="scoreText">Score: <span class="score">0</span></p>
+        <p id="leaderboardText">Leaderboard</p>
+        <table id="leaderboardTable">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Player</td>
+              <td>0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

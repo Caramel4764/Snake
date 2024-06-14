@@ -29,7 +29,7 @@ const drawMap =function() {
         ctx.fillStyle = player.color;
       }
       ctx.strokeStyle = "gray";
-      ctx.lineWidth = 5;
+      ctx.lineWidth = 2;
       ctx.strokeRect(indexX*gameMap.blockSize, indexY*gameMap.blockSize, gameMap.blockSize, gameMap.blockSize);
       ctx.fillRect(indexX*gameMap.blockSize, indexY*gameMap.blockSize, gameMap.blockSize, gameMap.blockSize);
     });

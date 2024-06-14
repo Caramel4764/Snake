@@ -5,11 +5,15 @@ import {playDie} from '../assets/audioScripts/die.js'
 
 const startMenu = document.getElementById('startMenu');
 const gameOverMenu = document.getElementById('gameOverMenu');
-
+const submitScoreMenu = document.getElementById('submitScoreMenu');
+const hiddenScoreInput = document.getElementById('hiddenScoreInput');
 const gameOver = function () {
   playDie();
   player.alive = false;
-  gameOverMenu.style.visibility = 'visible';
+  //gameOverMenu.style.visibility = 'visible';
+  submitScoreMenu.style.visibility = 'visible';
+  hiddenScoreInput.value = player.score;
+  console.log(hiddenScoreInput.value)
 }
 
 const restart = function() {
