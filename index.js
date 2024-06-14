@@ -11,6 +11,7 @@ let playButton = document.getElementById("startButton");
 playButton.addEventListener("click", startGame);
 window.addEventListener("keydown", changeDirection);
 
+
 drawMap();
 spawnApple();
 

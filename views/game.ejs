@@ -36,14 +36,13 @@
         >
           <div>
             <div>
-              <h2>Enter Your Name:</h2>
+              <h2>Submit Score?</h2>
               <form action='/submit'  method='post'>
-                <input name="name" type="text" id="nameInput" />
+                <input name="name" placeholder='Name' type="text" id="nameInput" />
                 <br>
                 <input class='submitButton' id="submitButton" value="Submit" type="submit"></input>
                 <br>
-                <!--type="hidden-->
-                <input name="score" name="score" type="hidden" id="hiddenScoreInput"/>
+                <input type="hidden" type="number" value="0" name="score" name="score" id="hiddenScoreInput"/>
               </form>
               <button type='button' class='submitButton' id="cancelButton" type="submit">X</button>
             </div>
@@ -69,11 +68,13 @@
             </tr>
           </thead>
           <tbody>
+            <% for (let i = 0; i < top10Score.length; i++) {%>
             <tr>
-              <td>1</td>
-              <td>Player</td>
-              <td>0</td>
+              <td><%= i+1 %></td>
+              <td><%= top10Score[i].name %></td>
+              <td><%= top10Score[i].score %></td>
             </tr>
+            <%}%>
           </tbody>
         </table>
       </div>
