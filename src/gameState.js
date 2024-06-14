@@ -7,10 +7,16 @@ const startMenu = document.getElementById('startMenu');
 const gameOverMenu = document.getElementById('gameOverMenu');
 const submitScoreMenu = document.getElementById('submitScoreMenu');
 const hiddenScoreInput = document.getElementById('hiddenScoreInput');
+const cancelButton = document.getElementById("cancelButton");
+
+cancelButton.addEventListener("click", function () {
+  submitScoreMenu.style.visibility = 'hidden';
+});
+
 const gameOver = function () {
   playDie();
   player.alive = false;
-  //gameOverMenu.style.visibility = 'visible';
+  gameOverMenu.style.visibility = 'visible';
   submitScoreMenu.style.visibility = 'visible';
   hiddenScoreInput.value = player.score;
   console.log(hiddenScoreInput.value)

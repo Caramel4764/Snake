@@ -6,15 +6,18 @@ const bodyParser = require("body-parser");
 const env = require("dotenv/config");
 const path = require('path')
 
+let top10Score = [];
+
+app.set('view engine', 'ejs')
 app.use(express.json());
 app.use(express.static("/"));
 app.use(express.static(path.join(__dirname,'/')));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.set('views', path.join(__dirname, 'views'));
 
-//app.set('/', "./index.html")
-//+ "/"
+
 mongoose
   .connect(
     `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@snake.qu72hiu.mongodb.net/snake`
@@ -43,8 +46,9 @@ const Player = mongoose
       },
     })
   )
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + '/game.html');
+app.get("/", async (req, res) => {
+  top10Score = await Player.find().sort({ score: -1 }).limit(10);
+  res.render('game', {top10Score: top10Score})
 });
 app.post("/submit", (req, res) => {
   res.status(204).end();
@@ -55,6 +59,10 @@ app.post("/submit", (req, res) => {
   });
   newPlayer.save();
 });
+app.get("/leaderboard", async(req, res) => {
+  top10Score = await Player.find().sort({ score: -1 }).limit(10);
+  console.log(top10Score)
+})
 
 app.listen(process.env.PORT, () => {
   console.log("Server is running on port 5000");
