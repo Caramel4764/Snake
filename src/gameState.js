@@ -8,18 +8,20 @@ const gameOverMenu = document.getElementById('gameOverMenu');
 const submitScoreMenu = document.getElementById('submitScoreMenu');
 const hiddenScoreInput = document.getElementById('hiddenScoreInput');
 const cancelButton = document.getElementById("cancelButton");
-
+const scoreValue = document.getElementsByClassName('scoreValue')
 cancelButton.addEventListener("click", function () {
   submitScoreMenu.style.visibility = 'hidden';
 });
-
 const gameOver = function () {
   playDie();
   player.alive = false;
   gameOverMenu.style.visibility = 'visible';
+  console.log(scoreValue[scoreValue.length-1])
+
+  if (player.score > parseInt(scoreValue[scoreValue.length-1].innerHTML)) {
   submitScoreMenu.style.visibility = 'visible';
+  }
   hiddenScoreInput.value = player.score;
-  console.log(hiddenScoreInput.value)
 }
 
 const restart = function() {

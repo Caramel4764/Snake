@@ -10,12 +10,12 @@ playAgainButton.addEventListener("click", restart);
 let playButton = document.getElementById("startButton");
 playButton.addEventListener("click", startGame);
 window.addEventListener("keydown", changeDirection);
+let hiddenScoreInput = document.getElementById("hiddenScoreInput");
 
 
 drawMap();
 spawnApple();
 
-let hiddenScoreInput = document.getElementById("hiddenScoreInput");
 
 setInterval(function () {
   if (player.alive == true) {
@@ -23,4 +23,5 @@ setInterval(function () {
     drawMap();
     hiddenScoreInput.value = player.score;
   }
+  
 }, player.speed);
