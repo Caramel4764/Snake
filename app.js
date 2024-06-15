@@ -50,20 +50,31 @@ app.get("/", async (req, res) => {
   top10Score = await Player.find().sort({ score: -1 }).limit(10);
   res.render('game', {top10Score: top10Score})
 });
-app.post("/submit", (req, res) => {
-  res.status(204).end();
+app.post("/submit", async (req, res) => {
   let newPlayer = new Player({
     name: req.body.name,
     score: req.body.score,
-    //score: 0,
   });
   newPlayer.save();
+  mongoose
+  .connect(
+    `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@snake.qu72hiu.mongodb.net/snake`
+  )
+  .then(() => {
+    console.log("Connected to MongoDB");
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+  top10Score = await Player.find().sort({ score: -1 }).limit(10);
+  console.log(top10Score);
+  return res.redirect('/');
+  //res.status(204).end();
 });
 app.get("/leaderboard", async(req, res) => {
   top10Score = await Player.find().sort({ score: -1 }).limit(10);
-  console.log(top10Score)
 })
 
 app.listen(process.env.PORT, () => {
-  console.log("Server is running on port 5000");
+  console.log(`Server is running on port ${process.env.PORT}`);
 });
