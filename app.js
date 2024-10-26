@@ -5,7 +5,13 @@ const app = express();
 const bodyParser = require("body-parser");
 const env = require("dotenv/config");
 const path = require('path')
+const Joi = require('joi')
 
+
+const schema = Joi.object({
+  name: Joi.string().min(1).max(17).required(),
+  score: Joi.number().required()
+})
 let top10Score = [];
 
 app.set('view engine', 'ejs')
@@ -50,7 +56,13 @@ app.get("/", async (req, res) => {
   top10Score = await Player.find().sort({ score: -1 }).limit(10);
   res.render('game', {top10Score: top10Score})
 });
+
 app.post("/submit", async (req, res) => {
+  const { error, value } = schema.validate(req.body)
+  if (error) {
+
+    return res.status(400).send(error.details[0].message)
+  }
   let newPlayer = new Player({
     name: req.body.name,
     score: req.body.score,
@@ -76,5 +88,5 @@ app.get("/leaderboard", async(req, res) => {
 })
 
 app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${process.env.PORT}`);
+  console.log(`Server is running on port http://localhost:3000/`);
 });
