@@ -10,6 +10,7 @@ const Joi = require('joi')
 
 const schema = Joi.object({
   name: Joi.string().min(1).max(17).required(),
+  score: Joi.number().required()
 })
 let top10Score = [];
 
@@ -59,6 +60,7 @@ app.get("/", async (req, res) => {
 app.post("/submit", async (req, res) => {
   const { error, value } = schema.validate(req.body)
   if (error) {
+
     return res.status(400).send(error.details[0].message)
   }
   let newPlayer = new Player({
@@ -86,5 +88,5 @@ app.get("/leaderboard", async(req, res) => {
 })
 
 app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${process.env.PORT}`);
+  console.log(`Server is running on port http://localhost:3000/`);
 });
